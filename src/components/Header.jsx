@@ -44,10 +44,16 @@ const Header = ({ variant = "landing" }) => {
         <div className="hidden md:flex items-center gap-4">
           {variant === "landing" ? (
             <>
-              <button className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">
+              <button
+                className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700"
+                onClick={() => navigate("/SignIn")}
+              >
                 Sign In
               </button>
-              <button className="border border-purple-600 text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-100">
+              <button
+                className="border border-purple-600 text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-100"
+                onClick={() => navigate("/SignUp")}
+              >
                 Sign Up
               </button>
             </>
@@ -92,10 +98,16 @@ const Header = ({ variant = "landing" }) => {
             </button>
           )}
 
-          <button className="bg-purple-600 text-white px-4 py-2 rounded-lg">
+          <button
+            className="bg-purple-600 text-white px-4 py-2 rounded-lg"
+            onClick={() => navigate("/SignIn")}
+          >
             Sign In
           </button>
-          <button className="border border-purple-600 text-purple-700 px-4 py-2 rounded-lg">
+          <button
+            onClick={() => navigate("/SignUp")}
+            className="border border-purple-600 text-purple-700 px-4 py-2 rounded-lg"
+          >
             Sign Up
           </button>
         </div>

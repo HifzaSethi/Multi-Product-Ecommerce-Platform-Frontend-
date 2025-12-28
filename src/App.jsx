@@ -7,6 +7,8 @@ import AdminDashboard from "./admin/pages/adminDashboard";
 import AdminProduct from "./admin/pages/AdminProduct";
 import Admincategories from "./admin/pages/AdminCategories";
 import AdminOrder from "./admin/pages/AdminOrder";
+import SignUp from "./pages/SignUp";
+import SignIn from "./pages/sigin";
 const App = () => {
   return (
     <>
@@ -18,6 +20,8 @@ const App = () => {
         <Route path="/admin/AdminProducts" element={<AdminProduct />} />
         <Route path="/admin/AdminOrder" element={<AdminOrder />} />
         <Route path="/admin/AdminCategories" element={<Admincategories />} />
+        <Route path="/SignUp" element={<SignUp />} />
+        <Route path="/SignIn" element={<SignIn />} />
       </Routes>
     </>
   );
