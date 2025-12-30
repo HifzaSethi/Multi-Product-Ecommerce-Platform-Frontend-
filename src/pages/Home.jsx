@@ -1,29 +1,23 @@
+import React from "react";
+import { useContext } from "react";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../Context/AuthContext";
+
 import {
   faCartShopping,
   faCircleInfo,
   faBolt,
 } from "@fortawesome/free-solid-svg-icons";
+
 const Home = () => {
   const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
   // Dummy products array
   const products = [
-    { id: 1, name: "Digital Poster", price: 15, image: "/images/product1.jpg" },
-    { id: 2, name: "Handmade Mug", price: 12, image: "/images/product2.jpg" },
-    {
-      id: 3,
-      name: "Custom Notebook",
-      price: 20,
-      image: "/images/product3.jpg",
-    },
-
-    { id: 6, name: "Sticker Pack", price: 5, image: "/images/product6.jpg" },
-    { id: 6, name: "Sticker Pack", price: 5, image: "/images/product6.jpg" },
-    { id: 6, name: "Sticker Pack", price: 5, image: "/images/product6.jpg" },
     { id: 1, name: "Digital Poster", price: 15, image: "/images/product1.jpg" },
     { id: 2, name: "Handmade Mug", price: 12, image: "/images/product2.jpg" },
     {
@@ -35,22 +29,6 @@ const Home = () => {
     { id: 4, name: "Wall Art Print", price: 25, image: "/images/product4.jpg" },
     { id: 5, name: "Greeting Card", price: 8, image: "/images/product5.jpg" },
     { id: 6, name: "Sticker Pack", price: 5, image: "/images/product6.jpg" },
-    { id: 6, name: "Sticker Pack", price: 5, image: "/images/product6.jpg" },
-    { id: 6, name: "Sticker Pack", price: 5, image: "/images/product6.jpg" },
-    { id: 6, name: "Sticker Pack", price: 5, image: "/images/product6.jpg" },
-    { id: 6, name: "Sticker Pack", price: 5, image: "/images/product6.jpg" },
-    { id: 6, name: "Sticker Pack", price: 5, image: "/images/product6.jpg" },
-    { id: 6, name: "Sticker Pack", price: 5, image: "/images/product6.jpg" },
-    { id: 6, name: "Sticker Pack", price: 5, image: "/images/product6.jpg" },
-    { id: 6, name: "Sticker Pack", price: 5, image: "/images/product6.jpg" },
-    { id: 1, name: "Digital Poster", price: 15, image: "/images/product1.jpg" },
-    { id: 2, name: "Handmade Mug", price: 12, image: "/images/product2.jpg" },
-    {
-      id: 3,
-      name: "Custom Notebook",
-      price: 20,
-      image: "/images/product3.jpg",
-    },
   ];
 
   return (
@@ -61,8 +39,7 @@ const Home = () => {
       {/* Main content */}
       <div className="flex-1 flex flex-col overflow-auto">
         {/* Header */}
-        <Header variant="home" />
-
+        <Header variant="home" key={user?.email || "guest"} />
         {/* Hero Section */}
         <div className="bg-purple-100 p-8 rounded-lg m-6">
           <h1 className="text-3xl font-bold text-purple-800 mb-2">
@@ -75,11 +52,12 @@ const Home = () => {
             Shop Now
           </button>
         </div>
+
         {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 m-6">
-          {products.map((product) => (
+          {products.map((product, index) => (
             <div
-              key={product.id}
+              key={`${product.id}-${index}`}
               className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden"
             >
               {/* Product Image */}
@@ -96,7 +74,6 @@ const Home = () => {
                 <h3 className="text-lg font-semibold text-gray-800 truncate">
                   {product.name}
                 </h3>
-
                 <p className="text-purple-700 font-bold text-lg mt-1">
                   ${product.price}
                 </p>
@@ -130,7 +107,7 @@ const Home = () => {
         </div>
 
         {/* Footer */}
-        <Footer></Footer>
+        <Footer />
       </div>
     </div>
   );
