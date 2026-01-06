@@ -1,9 +1,10 @@
 import AdminHeader from "../components/AdminHeader";
 import AdminSidebar from "../components/AdminSidebar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import { useNavigate } from "react-router-dom";
 import { faPlus, faEdit, faList } from "@fortawesome/free-solid-svg-icons";
 const AdminDashboard = () => {
+  const Navigate = useNavigate();
   const data = {
     TotalProduct: 21,
     Physical: 3,
@@ -72,7 +73,10 @@ const AdminDashboard = () => {
 
           <div className="flex flex-wrap gap-6 mb-4 mt-20">
             {/* Add Product */}
-            <button className="bg-green-700 text-white py-3 px-5 rounded-lg font-semibold hover:bg-green-800 transition">
+            <button
+              className="bg-green-700 text-white py-3 px-5 rounded-lg font-semibold hover:bg-green-800 transition"
+              onClick={() => Navigate("/admin/AddProducts")}
+            >
               <FontAwesomeIcon icon={faPlus} className="mr-2" />
               Add Product
             </button>

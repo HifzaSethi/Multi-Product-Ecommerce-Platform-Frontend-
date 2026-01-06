@@ -12,6 +12,8 @@ import SignIn from "./pages/SigIn";
 import Logout from "./pages/Logout";
 import { useContext } from "react";
 import { AuthContext } from "./Context/AuthContext";
+import AdminRoute from "../src/Routes/AdminRoute";
+import AddProducts from "../src/admin/pages/AddProduct";
 const App = () => {
   const { user, loading } = useContext(AuthContext);
 
@@ -29,10 +31,46 @@ const App = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={<Home />} />
         <Route path="/product-detail" element={<ProductDetail />} />
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/admin/AdminProducts" element={<AdminProduct />} />
-        <Route path="/admin/AdminOrder" element={<AdminOrder />} />
-        <Route path="/admin/AdminCategories" element={<Admincategories />} />
+        <Route
+          path="/admin"
+          element={
+            <AdminRoute>
+              <AdminDashboard />
+            </AdminRoute>
+          }
+        />
+        <Route
+          path="/admin/AdminProducts"
+          element={
+            <AdminRoute>
+              <AdminProduct></AdminProduct>
+            </AdminRoute>
+          }
+        />
+        <Route
+          path="/admin/AdminOrder"
+          element={
+            <AdminRoute>
+              <AdminOrder />
+            </AdminRoute>
+          }
+        />
+        <Route
+          path="/admin/AdminCategories"
+          element={
+            <AdminRoute>
+              <Admincategories />
+            </AdminRoute>
+          }
+        />
+        <Route
+          path="/admin/AddProducts"
+          element={
+            <AdminRoute>
+              <AddProducts />
+            </AdminRoute>
+          }
+        />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/SignIn" element={<SignIn />} />
         <Route

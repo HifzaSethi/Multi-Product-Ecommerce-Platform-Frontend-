@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 const LandingPage = () => {
+
   const pictures = [
     { id: 1, price: 15, imgsrc: "./assets/image1.jpeg" },
     { id: 2, price: 12, imgsrc: "./assets/image2.jpeg" },

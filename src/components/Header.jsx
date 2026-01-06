@@ -42,11 +42,7 @@ const Header = ({ variant = "landing" }) => {
 
     window.addEventListener("pageshow", onPageShow);
 
-    // ADDED: Force a local re-render when the user object is updated in Context
-    // if (user) {
-    //   setTick((t) => t + 1);
-    // }
-
+    
     return () => window.removeEventListener("pageshow", onPageShow);
   }, [user]); // <--- Add 'user' here to listen for the login/signup success
   // 3. Handle the loading state
