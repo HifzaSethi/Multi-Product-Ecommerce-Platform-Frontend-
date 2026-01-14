@@ -10,6 +10,7 @@ import AdminOrder from "./admin/pages/AdminOrder";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SigIn";
 import Logout from "./pages/Logout";
+import Cart from "./pages/Cart";
 import { useContext } from "react";
 import { AuthContext } from "./Context/AuthContext";
 import AdminRoute from "../src/Routes/AdminRoute";
@@ -47,6 +48,7 @@ const App = () => {
             </AdminRoute>
           }
         />
+        <Route path="/cart" element={<Cart />} />
         <Route
           path="/admin/AdminOrder"
           element={

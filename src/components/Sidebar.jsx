@@ -1,14 +1,17 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import {
   faHouseUser,
   faList,
-  faPaperPlane,
   faBell,
   faGear,
+  faCartShopping,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Sidebar = () => {
+  const navigate = useNavigate();
   const [categoryOpen, setCategoryOpen] = useState(false); // click toggle
   const [hoverOpen, setHoverOpen] = useState(false); // hover (desktop)
   const categoryRef = useRef(null);
@@ -78,7 +81,8 @@ const Sidebar = () => {
             className="hover:text-purple-700 cursor-pointer"
           />
           <FontAwesomeIcon
-            icon={faPaperPlane}
+            icon={faCartShopping}
+            onClick={() => navigate("/cart")}
             className="hover:text-purple-700 cursor-pointer"
           />
         </div>
@@ -116,7 +120,10 @@ const Sidebar = () => {
         </div>
 
         <FontAwesomeIcon icon={faBell} />
-        <FontAwesomeIcon icon={faPaperPlane} />
+        <FontAwesomeIcon
+          icon={faCartShopping}
+          onClick={() => navigate("/cart")}
+        />
         <FontAwesomeIcon icon={faGear} />
       </nav>
     </>

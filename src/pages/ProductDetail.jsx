@@ -75,7 +75,21 @@ const ProductDetail = () => {
               </div>
 
               <div className="mt-8 space-y-3">
-                <button className="w-full flex items-center justify-center gap-3 bg-green-700 text-white py-3 rounded-xl hover:bg-green-800 transition text-base sm:text-lg">
+                <button
+                  onClick={async () => {
+                    try {
+                      await axios.post(
+                        `${API}/api/cart/add/${product._id}`,
+                        {},
+                        { withCredentials: true }
+                      );
+                      alert("Added to Cart!");
+                    } catch (err) {
+                      console.error(err);
+                    }
+                  }}
+                  className="w-full flex items-center justify-center gap-3 bg-green-700 text-white py-3 rounded-xl hover:bg-green-800 transition text-base sm:text-lg"
+                >
                   <FontAwesomeIcon icon={faCartShopping} />
                   Add to Cart
                 </button>
